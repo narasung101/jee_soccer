@@ -1,19 +1,28 @@
 package com.soccer.web.factory;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 import com.soccer.web.pool.Constants;
 
 public class DatabaseFactory {
-	public static DatabaseBean createDatabase(String vendor) {
-		DatabaseBean db = null;
-		switch(vendor) {
+	public static Database createDatabase(String vendor) {
+		Database db = null;
 		
-		case "oracle" : db = new Oracle(); break;
-		case "mariadb" : db = new Oracle(); break;
-		case "h2" : db = break;
-		case "db2" : db = break;
-							
+		switch (vendor) {
+		case "oracle":
+			
+			break;
+			
+		case "maria":
+			
+			break;
+
+		default:
+			break;
 		}
+		
 		return db;
 	}
-
+	
 }

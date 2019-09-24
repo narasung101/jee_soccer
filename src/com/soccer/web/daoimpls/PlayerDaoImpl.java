@@ -27,11 +27,11 @@ public class PlayerDaoImpl implements PlayerDao {
 		try {
 			String sql = "SELECT DISTINCT POSITION as position \n" +
 					"FROM PLAYER";
-			ResultSet rs = DatabaseFactory
+			  PreparedStatement stmt = DatabaseFactory
 					  .createDatabase(Constants.VENDOR)
 					  .getConnection()
 				      .prepareStatement(sql);
-			 		 resultSet rs=executaQuery();
+			 		 ResulSet rs = stmt.executeQuery();
 		
 			 		 while(rs.next()) {
 							positions.add(rs.getString("position")); 
