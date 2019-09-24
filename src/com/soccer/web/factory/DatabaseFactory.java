@@ -1,9 +1,6 @@
 package com.soccer.web.factory;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 
-import com.soccer.web.pool.Constants;
 
 public class DatabaseFactory {
 	public static Database createDatabase(String vendor) {
@@ -11,11 +8,11 @@ public class DatabaseFactory {
 		
 		switch (vendor) {
 		case "oracle":
-			
+			db = new Oracle();
 			break;
 			
 		case "maria":
-			
+			db = new Maria();
 			break;
 
 		default:

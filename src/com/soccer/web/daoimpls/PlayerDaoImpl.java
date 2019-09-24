@@ -27,15 +27,15 @@ public class PlayerDaoImpl implements PlayerDao {
 		try {
 			String sql = "SELECT DISTINCT POSITION as position \n" +
 					"FROM PLAYER";
-			  PreparedStatement stmt = DatabaseFactory
-					  .createDatabase(Constants.VENDOR)
-					  .getConnection()
-				      .prepareStatement(sql);
-			 		 ResulSet rs = stmt.executeQuery();
+			
+			PreparedStatement stmt = DatabaseFactory.createDatabase(Constants.VENDOR).getcoConnection().prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				positions.add(rs.getString("position"));
+			}
+			 
 		
-			 		 while(rs.next()) {
-							positions.add(rs.getString("position")); 
-						}
+			 		 
 				
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -54,7 +54,7 @@ public class PlayerDaoImpl implements PlayerDao {
 	public List<PlayerBean> selectbyTeamIdHeightName(PlayerBean param) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}	
 	
 	
 }
