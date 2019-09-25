@@ -33,9 +33,7 @@ public class PlayerDaoImpl implements PlayerDao {
 			while(rs.next()) {
 				positions.add(rs.getString("position"));
 			}
-			 
-		
-			 		 
+			 				 		 
 				
 		} catch (Exception e) {
 			e.printStackTrace();

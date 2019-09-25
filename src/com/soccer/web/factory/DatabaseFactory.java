@@ -1,17 +1,16 @@
 package com.soccer.web.factory;
 
-
+import com.soccer.web.enums.DB;
 
 public class DatabaseFactory {
 	public static Database createDatabase(String vendor) {
 		Database db = null;
-		
-		switch (vendor) {
-		case "oracle":
+		switch (DB.valueOf(vendor)) {   //String이면 .vallueof
+		case ORACLE :
 			db = new Oracle();
 			break;
 			
-		case "maria":
+		case MARIA :
 			db = new Maria();
 			break;
 

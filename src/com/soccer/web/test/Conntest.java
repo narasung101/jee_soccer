@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.soccer.web.enums.DBDriver;
 import com.soccer.web.pool.Constants;
 
 public class Conntest {
@@ -16,7 +18,7 @@ public class Conntest {
 		
 		try {
 			Class.forName("Constants.DRIVER");
-			conn = DriverManager.getConnection(Constants.ORACLE_URL,
+			conn = DriverManager.getConnection(DBDriver.ORACLE_DRIVER.toString(),
 					Constants.USERNAME, Constants.PASSWORD);
 			if(conn != null) {
 				System.out.println("연결 성공");
