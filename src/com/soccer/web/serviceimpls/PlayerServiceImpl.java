@@ -14,8 +14,12 @@ public class PlayerServiceImpl implements PlayerService {
 		return instance;
 	}
 	
-	private PlayerServiceImpl() {
-		
+	private PlayerServiceImpl() {}
+	
+	@Override
+	public boolean login(PlayerBean param) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
@@ -39,4 +43,6 @@ public class PlayerServiceImpl implements PlayerService {
 		return null;
 	}
 
-}
+	
+
+	}

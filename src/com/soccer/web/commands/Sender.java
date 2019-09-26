@@ -7,7 +7,8 @@ public class Sender {
 	public static void forward(HttpServletRequest request
 			, HttpServletResponse response) {
 		try {
-			request.getRequestDispatcher("")
+			System.out.println("도착지:" + Receiver.cmd.getView());
+			request.getRequestDispatcher(Receiver.cmd.getView())
 			.forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();

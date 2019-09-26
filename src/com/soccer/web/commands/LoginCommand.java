@@ -2,9 +2,9 @@ package com.soccer.web.commands;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class MoveCommand extends Command {
-	
-	public MoveCommand(HttpServletRequest request) {
+import com.soccer.web.serviceimpls.PlayerServiceImpl;
+public class LoginCommand extends Command {
+	public LoginCommand(HttpServletRequest request) {
 		super.setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
@@ -13,11 +13,12 @@ public class MoveCommand extends Command {
 	
 	@Override
 	public void execute() {
-		setPage(request.getParameter("page"));
+				
+		if (PlayerServiceImpl.getInstance().login(null)) {
+			setPage(request.getParameter("page"));
+		} else {
+			setPage("index.jsp");
+		}
 		super.execute();
-		// request.setAttribute("pagename", request.getParameter("page"));
-	}
-	
-	}
-
-
+}
+}

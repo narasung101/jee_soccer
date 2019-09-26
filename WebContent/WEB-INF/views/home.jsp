@@ -16,7 +16,7 @@
 	<form id ="btn4" action="<%=request.getContextPath()%>/player.do">
 	팀아이디<input type="text" name="teamId"/>
 	포지션<input type="text" name="position"/>
-	<input type="hidden" name="action" value="find" />
+	<input type="hidden" name="action" value="find4" />
 	<input type="hidden" name="page" value="4_find_by_teamid_position"/>
 	<input type="submit" value="전송" />
 	</form>

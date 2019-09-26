@@ -22,30 +22,34 @@ public class PlayerController extends HttpServlet {
 	
 	protected void service (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Receiver r = new Receiver();
-		r.test(request);
+		r.init(request);
 		Commander c = new Commander();
 		Sender s = new Sender();		
 				
-		/** String action = request.getParameter("action");
+		String playerId = request.getParameter("playerId");
+		String solar = request.getParameter("solar");
+		String action = request.getParameter("action");
+		String page= request.getParameter("page");
+		
+		Receiver.init(request);
+		
+	/** String action = request.getParameter("action");
 		 PlayerBean player = null;
 		System.out.println("액션: " + action);
-		System.out.println("페이지:" + request.getParameter("page"));
-		
-		 switch(action) {
+				
+		switch(action) {
 		case "move" : break;
 		
-		case "find" :
+		case "find2" :
 	        request.setAttribute("positions", PlayerServiceImpl.getInstance().findPositions());
 	        break;		
 			
 		case "find4" :
-					System.out.println("find4 진입" +action);	
+					System.out.println("find4 진입" + action);	
 			player = new PlayerBean();
 			player.setTeamId(request.getParameter("teamId"));
 			player.setPosition(request.getParameter("position"));
-			request.setAttribute("player", PlayerServiceImpl.getInstance().findByTeamIdPosition(player));
-			
-			
+			request.setAttribute("players", PlayerServiceImpl.getInstance().findByTeamIdPosition(player));
 			break;	
 			
 		case "find5" :
@@ -55,15 +59,15 @@ public class PlayerController extends HttpServlet {
 			player.setHeight(request.getParameter("height"));
 			player.setPlayerName(request.getParameter("playerName"));
 			request.setAttribute("players", PlayerServiceImpl.getInstance().findbyTeamIdHeightName(player));
-			
 			break;	
 			
 		}
-		
+		String page = request.getParameter("page");
+		System.out.println("페이지:" + page);
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/" + request.getParameter("page") + ".jsp");
-		rd.forward(request, response);
- */
+		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/" + page + ".jsp");
+		rd.forward(request, response); */
+
 	}
 
 }

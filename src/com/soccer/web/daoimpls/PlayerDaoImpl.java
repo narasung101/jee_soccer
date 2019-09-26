@@ -15,10 +15,7 @@ import com.soccer.web.pool.Constants;
 
 public class PlayerDaoImpl implements PlayerDao {
 	private static PlayerDaoImpl instance = new PlayerDaoImpl();
-	//private static Connection conn;
-	
 	public static PlayerDaoImpl getInstance() {return instance;} 
-			
 	private PlayerDaoImpl() {
 	}
 	@Override
@@ -28,12 +25,12 @@ public class PlayerDaoImpl implements PlayerDao {
 			String sql = "SELECT DISTINCT POSITION as position \n" +
 					"FROM PLAYER";
 			
-			PreparedStatement stmt = DatabaseFactory.createDatabase(Constants.VENDOR).getcoConnection().prepareStatement(sql);
-			ResultSet rs = stmt.executeQuery();
+			ResultSet rs = DatabaseFactory.createDatabase(Constants.VENDOR).getcoConnection().prepareStatement(sql)
+			.executeQuery();
+						
 			while(rs.next()) {
 				positions.add(rs.getString("position"));
-			}
-			 				 		 
+			}			 				 		 
 				
 		} catch (Exception e) {
 			e.printStackTrace();

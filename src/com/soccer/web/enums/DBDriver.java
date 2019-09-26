@@ -1,7 +1,7 @@
 package com.soccer.web.enums;
 
 public enum DBDriver {
-	ORACLE_DRIVER, ORACLE_URL, MARIA_DRIVER, MARIA_URL;
+	ORACLE_DRIVER, MARIA_DRIVER;
 	
 	@Override
 	public String toString() {
