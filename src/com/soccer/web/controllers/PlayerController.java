@@ -21,19 +21,24 @@ public class PlayerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void service (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Receiver r = new Receiver();
-		r.init(request);
-		Commander c = new Commander();
-		Sender s = new Sender();		
-				
-		String playerId = request.getParameter("playerId");
-		String solar = request.getParameter("solar");
-		String action = request.getParameter("action");
-		String page= request.getParameter("page");
+		
+		System.out.println("★★★ 1. 서블릿 들어옴 ★★★ ");
+		System.out.println(String.format("request 값 출력 : %s, %s, %s, %s ",
+				request.getParameter("playerId"), 
+				request.getParameter("solar"),
+				request.getParameter("action"),
+				request.getParameter("page")));
 		
 		Receiver.init(request);
-		
-	/** String action = request.getParameter("action");
+		Sender.forward(request, response);
+				
+	/**
+	 * Receiver r = new Receiver();
+		r.init(request);
+		Commander c = new Commander();
+		Sender s = new Sender();	
+	 *  
+	 *  String action = request.getParameter("action");
 		 PlayerBean player = null;
 		System.out.println("액션: " + action);
 				

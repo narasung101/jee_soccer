@@ -9,37 +9,31 @@ import com.soccer.web.services.PlayerService;
 
 public class PlayerServiceImpl implements PlayerService {
 	private static PlayerServiceImpl instance = new PlayerServiceImpl();
-			
-	public static PlayerServiceImpl getInstance() {
-		return instance;
-	}
-	
-	private PlayerServiceImpl() {}
-	
+	public static PlayerServiceImpl getInstance() {return instance;}
+	public PlayerServiceImpl() {}
 	@Override
-	public boolean login(PlayerBean param) {
-		// TODO Auto-generated method stub
-		return false;
+	public PlayerBean login(PlayerBean param) {
+		System.out.println("★★★ 6. PlayerServiceImpl 의 login() 으로 이동 ★★★ ");
+		System.out.println(String.format("param 값 출력 : %s, %s ",
+				param.getPlayerId(), 
+				param.getSolar()));
+		return PlayerDaoImpl.getInstance().selectByPlayerIdSolar(param);
 	}
-
 	@Override
 	public List<String> findPositions() {
-		System.out.println("확인");
-		
-		return PlayerDaoImpl.getInstance().selectPositions();
+		return PlayerDaoImpl.
+				getInstance().
+				selectPositions();
 	}
 
 	@Override
 	public List<PlayerBean> findByTeamIdPosition(PlayerBean param) {
-		
-		List<PlayerBean> players = PlayerDaoImpl.getInstance().selectByTeamIdPosition(param);
-		return players;
+		return PlayerDaoImpl
+				.getInstance().selectByTeamIdPosition(param);
 	}
 
 	@Override
-	public List<PlayerBean> findbyTeamIdHeightName(PlayerBean param) {
-		
-		List<PlayerBean> players = PlayerDaoImpl.getInstance().selectbyTeamIdHeightName(param);
+	public List<PlayerBean> findByTeamIdHeightName(PlayerBean param) {
 		return null;
 	}
 

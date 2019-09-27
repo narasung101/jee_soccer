@@ -1,27 +1,18 @@
 package com.soccer.web.enums;
 
 public enum DBUrl {
-	ORACLE_URL, MARIA_URL;
-	
+	ORACLE_URL, MARIADB_URL;
 	@Override
 	public String toString() {
-		
 		String url = "";
 		switch (this) {
-		
 		case ORACLE_URL:
-			url = "jdbc:oracle:thin:@localhosts:1521:xe\\\\r\\\\n";
+			url = "jdbc:oracle:thin:@localhost:1521:xe";
 			break;
-			
-		case MARIA_URL:
-			url = "jdbc:mariadb://localhost:3306/test\\\\r\\\\n";
-			break;
-
 
 		default:
 			break;
 		}
-		
 		return url;
 	}
 

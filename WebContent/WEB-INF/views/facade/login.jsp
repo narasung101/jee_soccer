@@ -6,11 +6,13 @@
     	<meta charset="UTF-8" />
     	<title>Document</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="${js}/app.js"></script>
 </head>
 <body>
  <h2>축구 협회 관리 시스템</h2>
  <div id ="wrapper" style="width: 100%, height 100%">
- 	<form id ="login_form" action="<%=request.getContextPath()%>/player.do">
+ 	<img src="${img}/resources/img/soccer2.jpg" alt="" />
+ 	<form id ="login_form">
  		<table border="1" style="width:500px; height:200px; margin:100px auto">
     		<tr>
     			<td style="width: 300px">
@@ -26,7 +28,7 @@
     		<tr>
     			<td>
     				PASSWORD : <input type="text" name="solar" style="width:100%"/>
-    						  <input type="hidden" name="action" value="move"/>
+    						  <input type="hidden" name="action" value="login"/>
     						  <input type="hidden" name="page" value="home"/>
     					      						  
     			</td>
@@ -40,16 +42,8 @@
     		<h3 style="width:300px; margin: 0 auto"><a id="a_join" href="#">회원가입</a></h3>
  </div>
  <script>
+ app.init('${ctx}');
  
- $('#a_join').click(function() {
-	alert('클릭');
-	location.assign('<%=request.getContextPath()%>/player.do?action=move&page=home');
-});
- $('#login_form').submit(function() {
-	alert('클릭');
-});
  </script>   	
 </body>
 </html>
-
-
