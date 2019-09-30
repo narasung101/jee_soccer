@@ -7,5 +7,5 @@ public class PlayerBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String playerId, playerName, teamId, ePlayerName, nickname, joinYyyy,
 	position, backNo, nation, birthDate, 
-	solar, height,	weight;
+	solar, height, weight;
 }

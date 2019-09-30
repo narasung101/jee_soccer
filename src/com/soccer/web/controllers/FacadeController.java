@@ -44,6 +44,3 @@ public class FacadeController extends HttpServlet {
 		}
 			
 }
-
-
-

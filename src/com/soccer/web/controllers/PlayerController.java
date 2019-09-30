@@ -30,6 +30,7 @@ public class PlayerController extends HttpServlet {
 				request.getParameter("page")));
 		
 		Receiver.init(request);
+		System.out.println("리시버 밑");
 		Sender.forward(request, response);
 				
 	/**

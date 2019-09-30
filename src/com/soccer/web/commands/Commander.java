@@ -12,9 +12,12 @@ public class Commander {
 				request.getParameter("action"),
 				request.getParameter("page")));
 		Command cmd = null;
+		System.out.println("commander2");
 		switch(Action.valueOf(request.getParameter("action").toUpperCase())) {
 		case LOGIN : cmd = new LoginCommand(request); break;
-		case MOVE : cmd = 
+		
+		case MOVE : 
+			cmd = 
 				new MoveCommand(request);
 				break;
 		default:

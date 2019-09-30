@@ -8,8 +8,12 @@ import lombok.Data;
 public class Command implements Order{
 	protected String action, domain, page, view;
 	protected HttpServletRequest request;
+	
+	public Command() {
+		System.out.println("생성자 진입");
+	}
 	@Override
-	public void execute() {
+	public void execute() {	
 		System.out.println("★★★  4. Command 들어옴 ★★★");
 		System.out.println(String.format("request 값 출력 : %s, %s, %s, %s ",
 				request.getParameter("playerId"), 

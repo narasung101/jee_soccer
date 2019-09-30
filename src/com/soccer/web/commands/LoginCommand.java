@@ -6,7 +6,7 @@ import com.soccer.web.domains.PlayerBean;
 import com.soccer.web.serviceimpls.PlayerServiceImpl;
 public class LoginCommand extends Command {
 	public LoginCommand(HttpServletRequest request) {
-		//11
+		
 		System.out.println("★★★ 5. LoginCommand 들어옴 ★★★ ");
 		System.out.println(String.format("request 값 출력 : %s, %s, %s, %s ",
 				request.getParameter("playerId"), 
@@ -19,6 +19,7 @@ public class LoginCommand extends Command {
 		setAction(request.getParameter("action"));
 		execute();
 	}
+	@SuppressWarnings("unused")
 	@Override
 	public void execute() {
 		String playerId = request.getParameter("playerId");
@@ -27,13 +28,16 @@ public class LoginCommand extends Command {
 		player.setPlayerId(playerId);
 		player.setSolar(solar);
 		player = PlayerServiceImpl.getInstance().login(player);
-		System.out.println("10. DB에서 커맨드로 전달된 로그인 객체 : "+player.toString());
-		if(!player.getPlayerId().equals("")) {
+		//System.out.println("10. DB에서 커맨드로 전달된 로그인 객체 : "+player.toString());
+		
+		setPage((player!=null) ?request.getParameter("page"):"login");
+		super.execute();
+		/** if(!player.getPlayerId().equals("")) {
 			setPage(request.getParameter("page"));
 		}else {
 			setPage("index.jsp");
 		}
+		*/
 		
-		super.execute();
-}
+	}
 }
