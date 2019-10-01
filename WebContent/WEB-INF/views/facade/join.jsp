@@ -6,4 +6,4 @@
 <script>
 app.init('${ctx}')
 </script>
-<jsp:include page="../common/foot.jsp"/>
+<jsp:include page="../common/foot.jsp"/><!-- 11 22-->
