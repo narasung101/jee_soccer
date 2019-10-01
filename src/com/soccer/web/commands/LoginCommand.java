@@ -3,6 +3,7 @@ package com.soccer.web.commands;
 import javax.servlet.http.HttpServletRequest;
 
 import com.soccer.web.domains.PlayerBean;
+import com.soccer.web.pool.Constants;
 import com.soccer.web.serviceimpls.PlayerServiceImpl;
 public class LoginCommand extends Command {
 	public LoginCommand(HttpServletRequest request) {
@@ -17,11 +18,12 @@ public class LoginCommand extends Command {
 		setDomain(request.getServletPath()
 				.substring(1,request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
-		execute();
+		this.execute();
 	}
 	@SuppressWarnings("unused")
 	@Override
 	public void execute() {
+		
 		String playerId = request.getParameter("playerId");
 		String solar = request.getParameter("solar");
 		PlayerBean player = new PlayerBean();
@@ -29,9 +31,21 @@ public class LoginCommand extends Command {
 		player.setSolar(solar);
 		player = PlayerServiceImpl.getInstance().login(player);
 		//System.out.println("10. DB에서 커맨드로 전달된 로그인 객체 : "+player.toString());
+		System.out.println("db에서 로그인커맨드도착");
+		if (player.getPlayerId()==null) {
+			setPage("login");
+			System.out.println("로그인실패");
+		} else {
+			setPage(request.getParameter("page"));
+			this.view = String.format(Constants.DOUBLE_PATH, domain, "main" );
+			System.out.println("로그인성공");
+		}
+		//request.setAttribute("action", request.getServletContext()+"/facade.do");
+		//super.execute();
 		
-		setPage((player!=null) ?request.getParameter("page"):"login");
-		super.execute();
+		/**setPage((player!=null) ?request.getParameter("page"):"login");
+		super.execute(); */
+		
 		/** if(!player.getPlayerId().equals("")) {
 			setPage(request.getParameter("page"));
 		}else {

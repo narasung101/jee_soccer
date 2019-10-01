@@ -19,11 +19,12 @@ public class PlayerDaoImpl implements PlayerDao{
 	private PlayerDaoImpl() {}
 	@Override
 	public PlayerBean selectByPlayerIdSolar(PlayerBean param) {
-		PlayerBean player = null;
+		PlayerBean player = new PlayerBean();
 		String sql = "SELECT *\r\n" + 
 				"FROM PLAYER\r\n" + 
 				"WHERE PLAYER_ID LIKE ?\r\n" + 
 				"    AND SOLAR LIKE ?";
+		System.out.println("sdsd" + param.getPlayerId()+param.getSolar());
 		try {
 			PreparedStatement pst = DatabaseFactory.createDatabase(Constants.VENDOR).getConnection().prepareStatement(sql);
 			pst.setString(1, param.getPlayerId());
@@ -83,6 +84,28 @@ public class PlayerDaoImpl implements PlayerDao{
 	public List<PlayerBean> selectByMany(PlayerBean param) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public boolean insertPlayer(PlayerBean param) {
+		boolean flag = false;
+		try {
+			String sql = "INSERT INTO PLAYER(PLAYER_ID, SOLAR, TEAM_ID, PLAYER_NAME)\r\n" + 
+					"VALUES (?, ?, 'K02', '김나성')";
+			PreparedStatement stmt = DatabaseFactory
+					.createDatabase(Constants.VENDOR)
+					.getConnection()
+					.prepareStatement(sql);
+			System.out.println("123123" + param.getPlayerId()+"  " +  param.getSolar());
+			stmt.setString(1, param.getPlayerId());
+			stmt.setString(2, param.getSolar());
+			int rs = stmt.executeUpdate();
+			flag = (rs == 1);  
+					
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("DB "+ flag);
+		return flag;
 	}
 }
 	

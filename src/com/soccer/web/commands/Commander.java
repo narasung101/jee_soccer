@@ -14,12 +14,23 @@ public class Commander {
 		Command cmd = null;
 		System.out.println("commander2");
 		switch(Action.valueOf(request.getParameter("action").toUpperCase())) {
-		case LOGIN : cmd = new LoginCommand(request); break;
+		case CREATE : cmd = new CreateCommand(request);
+			break;
+		case SEARCH :
+			break;
+		case UPDATE :
+			break;
+		case DELETE :
+			break;
 		
-		case MOVE : 
-			cmd = 
-				new MoveCommand(request);
-				break;
+		case LOGIN : 
+			cmd = new LoginCommand(request); 
+			break;
+		
+		case MOVE :	
+			cmd = new MoveCommand(request);
+			break;
+			
 		default:
 			break;
 		}

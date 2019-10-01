@@ -15,6 +15,7 @@ import com.soccer.web.commands.Sender;
 import com.soccer.web.domains.PlayerBean;
 import com.soccer.web.serviceimpls.PlayerServiceImpl;
 import com.soccer.web.services.PlayerService;
+import com.soccer.web.enums.Action;
 
 @WebServlet("/player.do")
 public class PlayerController extends HttpServlet {
@@ -22,7 +23,7 @@ public class PlayerController extends HttpServlet {
 	
 	protected void service (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("★★★ 1. 서블릿 들어옴 ★★★ ");
+		System.out.println("★★★ 1. player 서블릿 들어옴 ★★★ ");
 		System.out.println(String.format("request 값 출력 : %s, %s, %s, %s ",
 				request.getParameter("playerId"), 
 				request.getParameter("solar"),
@@ -30,9 +31,17 @@ public class PlayerController extends HttpServlet {
 				request.getParameter("page")));
 		
 		Receiver.init(request);
-		System.out.println("리시버 밑");
+		switch (Action.valueOf(request.getParameter("action").toUpperCase())) {
+		case CREATE :request.setAttribute("page", "login"); break;
+		
+		default: break;
+		}
 		Sender.forward(request, response);
-				
+
+	}
+
+}
+
 	/**
 	 * Receiver r = new Receiver();
 		r.init(request);
@@ -74,6 +83,3 @@ public class PlayerController extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/" + page + ".jsp");
 		rd.forward(request, response); */
 
-	}
-
-}

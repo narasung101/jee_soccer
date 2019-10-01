@@ -20,8 +20,7 @@ public class MoveCommand extends Command {
 	
 	@Override
 	public void execute() {
-		System.out.println("★★★ 6. move execute 들어옴 ★★★ ");
-		
+				
 		setPage(request.getParameter("page"));
 		super.execute();
 		// request.setAttribute("pagename", request.getParameter("page"));
