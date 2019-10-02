@@ -2,6 +2,9 @@ package com.soccer.web.commands;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.soccer.web.pool.Constants;
+import com.soccer.web.serviceimpls.PlayerServiceImpl;
+
 public class SearchCommand extends Command{
 	
 	public SearchCommand(HttpServletRequest request) {
@@ -13,7 +16,7 @@ public class SearchCommand extends Command{
 	
 	@Override
 	public void execute() {
-	// TODO Auto-generated method stub
-	
+	request.setAttribute("positions", PlayerServiceImpl.getInstance().findPositions());
+	this.view = String.format(Constants.DOUBLE_PATH, "player", "main");
 	}
 }

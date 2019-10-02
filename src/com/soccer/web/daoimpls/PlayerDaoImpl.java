@@ -58,6 +58,7 @@ public class PlayerDaoImpl implements PlayerDao{
 	@Override
 	public List<String> selectPositions() {
 		List<String> positions = new ArrayList<>();
+		System.out.println("12345678" );
 		try {
 			String sql = "SELECT DISTINCT POSITION position \n" + 
 					"FROM PLAYER";
@@ -67,7 +68,7 @@ public class PlayerDaoImpl implements PlayerDao{
 					.prepareStatement(sql);
 			ResultSet rs =	stmt.executeQuery();
 			while(rs.next()) {
-				
+				positions.add(rs.getString("POSITION"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

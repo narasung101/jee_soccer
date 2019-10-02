@@ -36,8 +36,9 @@ public class LoginCommand extends Command {
 			setPage("login");
 			System.out.println("로그인실패");
 		} else {
+			System.out.println(request.getParameter("page"));
 			setPage(request.getParameter("page"));
-			this.view = String.format(Constants.DOUBLE_PATH, domain, "main" );
+			this.view = String.format(Constants.DOUBLE_PATH, domain, page);
 			System.out.println("로그인성공");
 		}
 		//request.setAttribute("action", request.getServletContext()+"/facade.do");

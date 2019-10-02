@@ -16,7 +16,7 @@ public class Commander {
 		switch(Action.valueOf(request.getParameter("action").toUpperCase())) {
 		case CREATE : cmd = new CreateCommand(request);
 			break;
-		case SEARCH :
+		case SEARCH : cmd = new SearchCommand(request);
 			break;
 		case UPDATE :
 			break;
